@@ -10,13 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --void:#0b0b10;
-    --panel:#15151c;
-    --panel-2:#1b1b24;
-    --line:rgba(236,234,226,0.12);
-    --line-strong:rgba(236,234,226,0.22);
-    --text:#ecebe4;
-    --text-dim:#98959f;
+    --void:#ffffff;
+    --panel:#f5f6f8;
+    --panel-2:#eaedf1;
+    --line:rgba(16,18,24,0.12);
+    --line-strong:rgba(16,18,24,0.22);
+    --text:#101218;
+    --text-dim:#626875;
     --cobalt:#3d5afe;
     --cobalt-dim:#3d5afe66;
     --signal:#ff5a36;
@@ -40,9 +40,6 @@
     font-size:16px;
     line-height:1.6;
     overflow-x:hidden;
-    background-image:
-      radial-gradient(circle at 85% -10%, rgba(61,90,254,0.16), transparent 45%),
-      radial-gradient(circle at -10% 40%, rgba(255,90,54,0.10), transparent 40%);
   }
 
   h1,h2,h3,h4{
@@ -72,7 +69,8 @@
   header{
     position:fixed; top:0; left:0; right:0; z-index:100;
     border-bottom:1px solid var(--line);
-    background:rgba(11,11,16,0.78);
+    background:rgba(255,255,255,0.88);
+    -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
   }
   .nav{
@@ -85,12 +83,7 @@
     font-size:19px;
     display:flex; align-items:center; gap:10px;
   }
-  .logo .mark{
-    width:14px; height:14px; border-radius:50%;
-    background:conic-gradient(var(--cobalt), var(--signal), var(--lime), var(--cobalt));
-    flex-shrink:0;
-  }
-  .logo span{color:var(--text-dim); font-weight:400;}
+  .logo img{width:180px; height:48px; object-fit:contain;}
 
   nav.links{display:flex; gap:2px;}
   nav.links a{
@@ -146,6 +139,7 @@
       linear-gradient(var(--line) 1px, transparent 1px),
       linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 70% 40%, black, transparent 70%);
     mask-image:radial-gradient(circle at 70% 40%, black, transparent 70%);
     opacity:0.5;
     pointer-events:none;
@@ -444,7 +438,7 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#home" class="logo"><span class="mark"></span>tmleonel<span>.com</span></a>
+    <a href="#home" class="logo" aria-label="tmleonel.com - início"><img src="logo.svg" alt="tmleonel.com"></a>
     <nav class="links" id="navLinks">
       <a href="#home" class="active">Home</a>
       <a href="#sobre">Sobre</a>
