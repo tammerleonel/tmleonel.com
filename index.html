@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tâmmer Leonel — Desenvolvedor &amp; Estrategista Digital</title>
+<meta name="description" content="Portfólio de Tâmmer Leonel: desenvolvimento web, dashboards de dados e estratégia de crescimento digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EDE3;
+    --paper-2:#FBF8F1;
+    --paper-3:#EAE3D4;
+    --ink:#28241f;
+    --ink-dim:#736b5e;
+    --mustard:#C17A2E;
+    --denim:#3B5B72;
+    --sage:#6b7f5b;
+    --line:rgba(40,36,31,0.14);
+    --line-soft:rgba(40,36,31,0.08);
+    --max:1160px;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:0.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.12;
+    color:var(--ink);
+  }
+  em{font-family:'Fraunces', serif; font-style:italic; font-weight:500; color:var(--mustard);}
+
+  .hand{
+    font-family:'Caveat', cursive;
+    font-weight:600;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px; position:relative; z-index:1;}
+  section{position:relative; z-index:1;}
+
+  ::selection{background:var(--mustard); color:var(--paper-2);}
+  :focus-visible{outline:2px solid var(--denim); outline-offset:3px;}
+
+  /* wobbly underline / circle marks (signature device) */
+  .mark-underline{
+    position:relative; display:inline-block;
+  }
+  .mark-underline svg{
+    position:absolute; left:-2%; right:-2%; bottom:-0.12em; width:104%; height:0.5em;
+    overflow:visible;
+  }
+  .mark-underline path{
+    fill:none; stroke:var(--mustard); stroke-width:6; stroke-linecap:round;
+    stroke-dasharray:400; stroke-dashoffset:400;
+    transition:stroke-dashoffset 1s var(--ease);
+  }
+  .mark-underline.in path{stroke-dashoffset:0;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(242,237,227,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:82px;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:600; font-size:22px;
+    display:flex; align-items:baseline; gap:2px;
+  }
+  .logo .dot{color:var(--mustard);}
+  .logo small{font-family:'Karla',sans-serif; font-weight:400; font-size:14px; color:var(--ink-dim); margin-left:2px;}
+
+  nav.links{display:flex; gap:6px; align-items:center;}
+  nav.links a{
+    font-size:15px; color:var(--ink-dim);
+    padding:8px 14px; position:relative;
+    transition:color .25s var(--ease);
+  }
+  nav.links a:hover, nav.links a.active{color:var(--ink);}
+  nav.links a .u{
+    position:absolute; left:14px; right:14px; bottom:2px; height:6px; overflow:visible;
+  }
+  nav.links a .u path{
+    fill:none; stroke:var(--mustard); stroke-width:5; stroke-linecap:round;
+    stroke-dasharray:120; stroke-dashoffset:120; transition:stroke-dashoffset .35s var(--ease);
+  }
+  nav.links a:hover .u path, nav.links a.active .u path{stroke-dashoffset:0;}
+
+  .nav-cta{
+    font-family:'Karla',sans-serif; font-weight:600; font-size:14.5px;
+    padding:11px 20px; background:var(--ink); color:var(--paper-2);
+    border-radius:3px; transform:rotate(-0.6deg);
+    transition:transform .25s var(--ease), background .25s var(--ease);
+  }
+  .nav-cta:hover{transform:rotate(0.6deg); background:var(--mustard);}
+
+  .burger{
+    display:none; flex-direction:column; gap:5px;
+    background:none; border:none; cursor:pointer; padding:8px;
+  }
+  .burger span{width:22px; height:2px; background:var(--ink); display:block; border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:96vh; display:flex; align-items:center;
+    padding-top:110px; padding-bottom:60px;
+    position:relative;
+  }
+  .hero-inner{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:50px; align-items:center;
+  }
+  .hero-tag{
+    font-family:'Caveat', cursive; font-size:22px; color:var(--denim);
+    display:inline-flex; align-items:center; gap:10px; margin-bottom:18px;
+    transform:rotate(-2deg);
+  }
+  .hero-tag::before{content:"✳"; font-size:16px; color:var(--mustard);}
+
+  .hero h1{
+    font-size:clamp(38px, 5.2vw, 64px);
+    margin-bottom:26px;
+  }
+  .hero p.lead{
+    font-size:18.5px; color:var(--ink-dim); max-width:480px; margin-bottom:34px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    font-family:'Karla', sans-serif; font-weight:600; font-size:15px;
+    padding:14px 26px; display:inline-flex; align-items:center; gap:10px;
+    border-radius:3px; transition:all .25s var(--ease);
+  }
+  .btn.primary{background:var(--ink); color:var(--paper-2);}
+  .btn.primary:hover{background:var(--mustard); transform:translateY(-2px);}
+  .btn.ghost{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn.ghost:hover{background:var(--ink); color:var(--paper-2);}
+  .side-note{
+    font-family:'Caveat', cursive; font-size:19px; color:var(--ink-dim);
+    display:flex; align-items:center; gap:6px;
+  }
+
+  .hero-portrait{
+    position:relative; aspect-ratio:1/1.05; max-width:420px; justify-self:end;
+  }
+  .hero-portrait .frame{
+    position:absolute; inset:0; border-radius:50% 50% 48% 52% / 55% 52% 48% 45%;
+    background:linear-gradient(150deg, #d8cdb2, var(--paper-3));
+    border:1.5px solid var(--line);
+  }
+  .hero-portrait .initials{
+    position:absolute; inset:0; display:grid; place-items:center;
+    font-family:'Fraunces', serif; font-size:96px; font-weight:500; color:var(--ink);
+    opacity:0.88;
+  }
+  .hero-portrait .ring{
+    position:absolute; inset:-18px; border:1.5px dashed var(--line);
+    border-radius:50% 50% 48% 52% / 55% 52% 48% 45%;
+    animation:spin 90s linear infinite;
+  }
+  @keyframes spin{from{transform:rotate(0)} to{transform:rotate(360deg)}}
+  .hero-portrait .chip{
+    position:absolute; bottom:-14px; left:-24px;
+    background:var(--paper-2); border:1px solid var(--line);
+    padding:10px 16px; border-radius:4px; transform:rotate(-3deg);
+    font-family:'Caveat', cursive; font-size:19px; color:var(--ink);
+    box-shadow:0 6px 16px rgba(40,36,31,0.08);
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:110px 0;}
+  .section-head{margin-bottom:56px; max-width:640px;}
+  .section-head .tag{
+    font-family:'Caveat', cursive; font-size:20px; color:var(--denim);
+    transform:rotate(-1.5deg); display:inline-block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(28px, 3.4vw, 40px); margin-bottom:14px;}
+  .section-head p{color:var(--ink-dim); font-size:16.5px;}
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  .divider{
+    height:44px; margin:0 auto; max-width:var(--max); padding:0 32px;
+    display:flex; align-items:center;
+  }
+  .divider svg{width:100%; height:14px;}
+  .divider path{stroke:var(--line); stroke-width:1.5; fill:none;}
+
+  /* ---------- SOBRE ---------- */
+  #sobre{background:var(--paper-3);}
+  .about-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;
+  }
+  .about-photo{
+    position:relative; background:var(--paper-2); border:1px solid var(--line);
+    border-radius:6px; padding:22px; transform:rotate(-1.2deg);
+    box-shadow:0 10px 26px rgba(40,36,31,0.08);
+  }
+  .about-photo .ph{
+    aspect-ratio:4/5; background:linear-gradient(160deg, #cdbf9a, #e9dfc4);
+    border-radius:3px; display:grid; place-items:center;
+    font-family:'Fraunces', serif; font-size:64px; color:var(--paper-2);
+  }
+  .about-photo figcaption{
+    font-family:'Caveat', cursive; font-size:18px; color:var(--ink-dim);
+    margin-top:14px; text-align:center;
+  }
+  .about-body p{color:var(--ink-dim); margin-bottom:18px; font-size:16.5px;}
+  .about-body p strong{color:var(--ink); font-weight:600;}
+
+  .focus-list{margin-top:36px; display:flex; flex-direction:column; gap:0;}
+  .focus-item{
+    display:grid; grid-template-columns:52px 1fr; gap:18px;
+    padding:20px 0; border-top:1px solid var(--line);
+  }
+  .focus-item:last-child{border-bottom:1px solid var(--line);}
+  .focus-item .glyph{
+    width:40px; height:40px; border-radius:50%;
+    display:grid; place-items:center; font-family:'Fraunces',serif; font-size:16px;
+    border:1.5px solid var(--ink);
+  }
+  .focus-item:nth-child(1) .glyph{color:var(--mustard); border-color:var(--mustard);}
+  .focus-item:nth-child(2) .glyph{color:var(--denim); border-color:var(--denim);}
+  .focus-item:nth-child(3) .glyph{color:var(--sage); border-color:var(--sage);}
+  .focus-item h4{font-size:18px; margin-bottom:6px;}
+  .focus-item p{font-size:14.5px; color:var(--ink-dim);}
+
+  /* ---------- PROJETOS ---------- */
+  .proj-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:28px;
+  }
+  .card{
+    background:var(--paper-2); border:1px solid var(--line); border-radius:6px;
+    padding:34px; position:relative;
+    box-shadow:0 6px 18px rgba(40,36,31,0.05);
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .proj-grid .card:nth-child(1){transform:rotate(-0.7deg);}
+  .proj-grid .card:nth-child(2){transform:rotate(0.5deg);}
+  .proj-grid .card:nth-child(3){transform:rotate(0.4deg);}
+  .proj-grid .card:nth-child(4){transform:rotate(-0.5deg);}
+  .card:hover{transform:rotate(0deg) translateY(-4px); box-shadow:0 14px 30px rgba(40,36,31,0.1);}
+
+  .card .stamp{
+    position:absolute; top:-12px; right:22px;
+    font-family:'Caveat', cursive; font-size:16px; color:var(--paper-2);
+    background:var(--mustard); padding:4px 12px; border-radius:3px;
+    transform:rotate(3deg);
+  }
+  .card h3{font-size:22px; margin-bottom:12px; margin-top:6px;}
+  .card p{color:var(--ink-dim); font-size:15px; margin-bottom:20px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-size:12.5px; padding:5px 12px; border-radius:20px;
+    border:1px solid var(--line); color:var(--ink-dim);
+  }
+  .card-link{
+    display:inline-flex; align-items:center; gap:8px; margin-top:22px;
+    font-weight:600; font-size:14.5px; color:var(--ink);
+  }
+  .card-link .arrow{transition:transform .25s var(--ease); color:var(--mustard);}
+  .card:hover .card-link .arrow{transform:translateX(5px);}
+
+  .note-box{
+    margin-top:38px; padding:20px 24px; background:var(--paper-2);
+    border:1px dashed var(--line); border-radius:6px;
+    font-size:14.5px; color:var(--ink-dim); display:flex; gap:14px; align-items:flex-start;
+    transform:rotate(-0.3deg);
+  }
+  .note-box .hand{font-size:19px; color:var(--ink); flex-shrink:0;}
+
+  /* ---------- HABILIDADES ---------- */
+  #habilidades{background:var(--paper-3);}
+  .skill-cloud{display:flex; flex-wrap:wrap; gap:14px; margin-top:10px;}
+  .chip{
+    padding:12px 20px; background:var(--paper-2); border:1px solid var(--line);
+    border-radius:24px; font-size:15px; display:inline-flex; align-items:center; gap:9px;
+    transition:transform .2s var(--ease), border-color .2s var(--ease);
+  }
+  .chip:hover{transform:translateY(-3px); border-color:var(--ink);}
+  .chip .d{width:8px; height:8px; border-radius:50%;}
+  .chip.dev .d{background:var(--mustard);}
+  .chip.data .d{background:var(--denim);}
+  .chip.growth .d{background:var(--sage);}
+
+  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:44px;}
+  .skill-group-label{
+    font-family:'Caveat', cursive; font-size:19px;
+    display:flex; align-items:center; gap:8px; margin-bottom:4px;
+  }
+  .skill-group-label .d{width:9px; height:9px; border-radius:50%;}
+  .skill-groups .dev .d{background:var(--mustard);}
+  .skill-groups .data .d{background:var(--denim);}
+  .skill-groups .growth .d{background:var(--sage);}
+
+  /* ---------- CONTATO ---------- */
+  .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px;}
+  .contact-info .item{padding:20px 0; border-top:1px solid var(--line);}
+  .contact-info .item:last-child{border-bottom:1px solid var(--line);}
+  .contact-info .item .label{font-family:'Caveat', cursive; font-size:17px; color:var(--ink-dim); display:block; margin-bottom:6px;}
+  .contact-info .item a, .contact-info .item span.val{font-size:18px; font-weight:500;}
+  .contact-info .item a:hover{color:var(--mustard);}
+
+  .contact-card{
+    background:var(--paper-2); border:1px solid var(--line); border-radius:8px;
+    padding:38px; box-shadow:0 10px 26px rgba(40,36,31,0.06);
+  }
+  form{display:flex; flex-direction:column; gap:20px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field label{font-size:13.5px; font-weight:600; color:var(--ink-dim);}
+  .field input, .field textarea{
+    background:var(--paper); border:1px solid var(--line); border-radius:4px;
+    color:var(--ink); font-family:'Karla', sans-serif; font-size:15px;
+    padding:12px 14px; resize:none; transition:border-color .2s;
+  }
+  .field input:focus, .field textarea:focus{border-color:var(--mustard); outline:none;}
+  form .btn{align-self:flex-start; margin-top:6px; cursor:pointer; border:none;}
+  .form-status{font-size:13.5px; color:var(--ink-dim); min-height:18px;}
+
+  /* ---------- LOJA ---------- */
+  .shop-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .shop-card{
+    background:var(--paper-2); border:1px solid var(--line); border-radius:6px;
+    padding:26px; display:flex; flex-direction:column; min-height:250px;
+    transition:transform .25s var(--ease);
+  }
+  .shop-grid .shop-card:nth-child(1){transform:rotate(-0.8deg);}
+  .shop-grid .shop-card:nth-child(2){transform:rotate(0.6deg);}
+  .shop-grid .shop-card:nth-child(3){transform:rotate(-0.4deg);}
+  .shop-card:hover{transform:rotate(0) translateY(-4px);}
+  .shop-card .badge{
+    align-self:flex-start; font-family:'Caveat', cursive; font-size:16px;
+    padding:4px 12px; border-radius:14px; background:var(--paper-3); color:var(--ink-dim);
+    margin-bottom:20px; transform:rotate(-2deg);
+  }
+  .shop-card .thumb{
+    width:56px; height:56px; border-radius:50%; margin-bottom:20px;
+    display:grid; place-items:center; font-family:'Fraunces',serif; font-size:22px; color:var(--paper-2);
+  }
+  .shop-grid .shop-card:nth-child(1) .thumb{background:var(--mustard);}
+  .shop-grid .shop-card:nth-child(2) .thumb{background:var(--denim);}
+  .shop-grid .shop-card:nth-child(3) .thumb{background:var(--sage);}
+  .shop-card h3{font-size:19px; margin-bottom:10px;}
+  .shop-card p{font-size:14px; color:var(--ink-dim); flex-grow:1;}
+  .shop-card .price{
+    margin-top:18px; font-family:'Caveat', cursive; font-size:18px;
+    color:var(--ink-dim); padding-top:14px; border-top:1px solid var(--line);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line); padding:56px 0 40px;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;}
+  .footer-nav{display:flex; gap:22px; flex-wrap:wrap;}
+  .footer-nav a{font-size:14.5px; color:var(--ink-dim);}
+  .footer-nav a:hover{color:var(--mustard);}
+  .footer-bottom{
+    margin-top:36px; padding-top:22px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; font-size:13px; color:var(--ink-dim);
+    flex-wrap:wrap; gap:12px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px){
+    .hero-inner{grid-template-columns:1fr; gap:50px;}
+    .hero-portrait{justify-self:start; max-width:280px;}
+    .about-grid, .contact-grid{grid-template-columns:1fr; gap:44px;}
+    .skill-groups{grid-template-columns:1fr; gap:30px;}
+    .proj-grid{grid-template-columns:1fr;}
+    .shop-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 720px){
+    nav.links{
+      position:fixed; top:82px; left:0; right:0; bottom:0;
+      background:var(--paper); flex-direction:column; align-items:flex-start; padding:24px 32px; gap:4px;
+      transform:translateX(100%); transition:transform .35s var(--ease);
+    }
+    nav.links.open{transform:translateX(0);}
+    nav.links a{padding:16px 0; font-size:17px; border-bottom:1px solid var(--line); width:100%;}
+    .nav-cta{display:none;}
+    .burger{display:flex;}
+    .wrap{padding:0 22px;}
+    section{padding:76px 0;}
+    .cta-row{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="logo">tmleonel<span class="dot">.</span><small>com</small></a>
+    <nav class="links" id="navLinks">
+      <a href="#home" class="active">Home<svg class="u" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M2,5 Q30,1 50,4 T98,3"/></svg></a>
+      <a href="#sobre">Sobre<svg class="u" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M2,5 Q30,1 50,4 T98,3"/></svg></a>
+      <a href="#projetos">Projetos<svg class="u" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M2,5 Q30,1 50,4 T98,3"/></svg></a>
+      <a href="#habilidades">Habilidades<svg class="u" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M2,5 Q30,1 50,4 T98,3"/></svg></a>
+      <a href="#contato">Contato<svg class="u" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M2,5 Q30,1 50,4 T98,3"/></svg></a>
+      <a href="#loja">Loja<svg class="u" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M2,5 Q30,1 50,4 T98,3"/></svg></a>
+    </nav>
+    <a href="#contato" class="nav-cta">Iniciar projeto</a>
+    <button class="burger" id="burger" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-content">
+        <p class="hero-tag">oi, eu sou o Tâmmer</p>
+        <h1>Ajudo pessoas e marcas a colocar ordem <span class="mark-underline" id="markHero">no caos digital<svg viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M4,16 Q80,4 150,14 T296,10"/></svg></span>.</h1>
+        <p class="lead">Desenvolvo aplicações web, transformo planilhas soltas em dashboards que fazem sentido, e ajudo criadores a organizar sua estratégia de conteúdo. Sem fórmula pronta — cada projeto ganha a estrutura que ele precisa.</p>
+        <div class="cta-row">
+          <a href="#projetos" class="btn primary">Ver o que já fiz</a>
+          <a href="#contato" class="btn ghost">Bora conversar</a>
+          <span class="side-note">✎ respondo rapidinho</span>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <div class="ring"></div>
+        <div class="frame"></div>
+        <div class="initials">TL</div>
+        <div class="chip">web · dados · growth</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 1000 14" preserveAspectRatio="none"><path d="M0,7 Q250,1 500,8 T1000,6"/></svg></div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">um pouco sobre mim</span>
+        <h2>Do código à estratégia</h2>
+      </div>
+      <div class="about-grid">
+        <figure class="about-photo reveal">
+          <div class="ph">TL</div>
+          <figcaption>foto entra aqui ↝</figcaption>
+        </figure>
+        <div class="about-body reveal">
+          <p>Trabalho na interseção entre <strong>desenvolvimento web</strong>, <strong>dados</strong> e <strong>estratégia digital</strong>. No dia a dia, isso significa escrever aplicações com controle de acesso, montar pipelines que transformam planilhas em painéis vivos, e planejar calendários editoriais para quem cria conteúdo.</p>
+          <p>Gosto de projetos onde tem um problema real de organização — informação espalhada, processo manual, decisão sem dado — e meu trabalho é desenhar a estrutura (o sistema, a tela, o plano) que resolve isso de um jeito simples de manter.</p>
+          <div class="focus-list">
+            <div class="focus-item">
+              <div class="glyph">1</div>
+              <div><h4>Produto &amp; Web</h4><p>Aplicações com autenticação, permissões e interfaces objetivas.</p></div>
+            </div>
+            <div class="focus-item">
+              <div class="glyph">2</div>
+              <div><h4>Dados &amp; Dashboards</h4><p>Pipelines que convertem planilhas em painéis visuais e acionáveis.</p></div>
+            </div>
+            <div class="focus-item">
+              <div class="glyph">3</div>
+              <div><h4>Growth &amp; Conteúdo</h4><p>Estratégia editorial, benchmarking e crescimento de audiência.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">alguns trabalhos</span>
+        <h2>Coisas que já construí</h2>
+        <p>Uma seleção de projetos recentes, entre produto, dados e estratégia.</p>
+      </div>
+      <div class="proj-grid">
+        <div class="card reveal">
+          <span class="stamp">recente</span>
+          <h3>Dashboard de Frota</h3>
+          <p>Painel web para gestão de frota, substituindo um fluxo manual em Excel por importação automatizada de dados e visualização em tempo real, com filtros e gráficos.</p>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Chart.js</span><span class="tag">Dashboard</span></div>
+          <span class="card-link">Ver estudo de caso <span class="arrow">→</span></span>
+        </div>
+        <div class="card reveal">
+          <h3>Controle de Acesso por Setor</h3>
+          <p>Aplicação web com login por e-mail e filtragem automática de documentos por setor, aplicando permissões de acordo com o perfil do usuário logado.</p>
+          <div class="tags"><span class="tag">Web App</span><span class="tag">RBAC</span><span class="tag">Node.js</span></div>
+          <span class="card-link">Ver estudo de caso <span class="arrow">→</span></span>
+        </div>
+        <div class="card reveal">
+          <h3>Growth para Criador de Conteúdo</h3>
+          <p>Estratégia de crescimento para um criador de games e cultura nerd: benchmark de canais de referência, novos pilares de conteúdo e calendário editorial multiplataforma.</p>
+          <div class="tags"><span class="tag">Growth</span><span class="tag">Conteúdo</span><span class="tag">Analytics</span></div>
+          <span class="card-link">Ver estudo de caso <span class="arrow">→</span></span>
+        </div>
+        <div class="card reveal">
+          <h3>Automação de Follow-up</h3>
+          <p>Sistema em Google Apps Script para envio automático de e-mails de acompanhamento de orçamentos de reparo, integrado diretamente à planilha de controle.</p>
+          <div class="tags"><span class="tag">Apps Script</span><span class="tag">Automação</span><span class="tag">Sheets</span></div>
+          <span class="card-link">Ver estudo de caso <span class="arrow">→</span></span>
+        </div>
+      </div>
+      <div class="note-box reveal">
+        <span class="hand">note:</span>
+        <p>estes cards estão prontos pra receber links, imagens e números reais de cada projeto — é só trocar o conteúdo de exemplo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">ferramentas do dia a dia</span>
+        <h2>O que eu uso pra colocar a mão na massa</h2>
+      </div>
+      <div class="skill-groups">
+        <div class="reveal">
+          <div class="skill-group-label dev"><span class="d"></span>Desenvolvimento</div>
+          <div class="skill-cloud">
+            <span class="chip dev"><span class="d"></span>JavaScript</span>
+            <span class="chip dev"><span class="d"></span>React</span>
+            <span class="chip dev"><span class="d"></span>Node.js</span>
+            <span class="chip dev"><span class="d"></span>APIs REST</span>
+            <span class="chip dev"><span class="d"></span>Apps Script</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="skill-group-label data"><span class="d"></span>Dados &amp; Dashboards</div>
+          <div class="skill-cloud">
+            <span class="chip data"><span class="d"></span>Planilhas</span>
+            <span class="chip data"><span class="d"></span>Chart.js</span>
+            <span class="chip data"><span class="d"></span>PapaParse</span>
+            <span class="chip data"><span class="d"></span>Pipelines JSON</span>
+            <span class="chip data"><span class="d"></span>Automação</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="skill-group-label growth"><span class="d"></span>Estratégia &amp; Growth</div>
+          <div class="skill-cloud">
+            <span class="chip growth"><span class="d"></span>Conteúdo</span>
+            <span class="chip growth"><span class="d"></span>Calendário editorial</span>
+            <span class="chip growth"><span class="d"></span>Benchmarking</span>
+            <span class="chip growth"><span class="d"></span>Redes sociais</span>
+            <span class="chip growth"><span class="d"></span>Documentação</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">e aí, vamos conversar?</span>
+        <h2>Bora construir algo</h2>
+        <p>Conta um pouco sobre o problema — eu respondo com os próximos passos.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="item"><span class="label">e-mail</span><a href="mailto:contato@tmleonel.com">contato@tmleonel.com</a></div>
+          <div class="item"><span class="label">github</span><a href="https://github.com/tmleonel" target="_blank" rel="noopener">github.com/tmleonel</a></div>
+          <div class="item"><span class="label">linkedin</span><a href="https://linkedin.com/in/tmleonel" target="_blank" rel="noopener">linkedin.com/in/tmleonel</a></div>
+          <div class="item"><span class="label">de onde escrevo</span><span class="val">Belo Horizonte, Brasil</span></div>
+        </div>
+        <div class="contact-card reveal">
+          <form id="contactForm">
+            <div class="field"><label for="name">Nome</label><input id="name" name="name" type="text" required placeholder="Seu nome"></div>
+            <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required placeholder="voce@email.com"></div>
+            <div class="field"><label for="message">Mensagem</label><textarea id="message" name="message" rows="4" required placeholder="Conte sobre o seu projeto"></textarea></div>
+            <button type="submit" class="btn primary">Enviar mensagem</button>
+            <p class="form-status" id="formStatus"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOJA -->
+  <section id="loja">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">pra quem quer fazer sozinho</span>
+        <h2>Produtos digitais</h2>
+        <p>Templates e materiais pra resolver o mesmo problema por conta própria.</p>
+      </div>
+      <div class="shop-grid">
+        <div class="shop-card reveal">
+          <span class="badge">em breve</span>
+          <div class="thumb">D</div>
+          <h3>Template de Dashboard</h3>
+          <p>Estrutura pronta pra transformar planilhas em um painel web com filtros e gráficos.</p>
+          <div class="price">a definir</div>
+        </div>
+        <div class="shop-card reveal">
+          <span class="badge">em breve</span>
+          <div class="thumb">G</div>
+          <h3>Guia de Growth</h3>
+          <p>Passo a passo pra montar calendário editorial e pilares de conteúdo.</p>
+          <div class="price">a definir</div>
+        </div>
+        <div class="shop-card reveal">
+          <span class="badge">em breve</span>
+          <div class="thumb">A</div>
+          <h3>Script de Automação</h3>
+          <p>Automação em Google Apps Script pra follow-up de e-mails via planilha.</p>
+          <div class="price">a definir</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <a href="#home" class="logo">tmleonel<span class="dot">.</span><small>com</small></a>
+      <div class="footer-nav">
+        <a href="#home">Home</a><a href="#sobre">Sobre</a><a href="#projetos">Projetos</a>
+        <a href="#habilidades">Habilidades</a><a href="#contato">Contato</a><a href="#loja">Loja</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tâmmer Leonel. Feito à mão, com café.</span>
+      <span class="hand">até já ✎</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const sections = document.querySelectorAll('main section, .hero');
+  const navAnchors = document.querySelectorAll('nav.links a');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.getAttribute('id');
+        navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // draw-in for hero underline once visible
+  const heroMark = document.getElementById('markHero');
+  const markObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ heroMark.classList.add('in'); markObs.disconnect(); }
+    });
+  }, { threshold: 0.5 });
+  markObs.observe(heroMark);
+
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    status.textContent = 'Mensagem pronta — conecte este formulário a um serviço de e-mail pra ativar o envio.';
+  });
+</script>
+
+</body>
+</html>
