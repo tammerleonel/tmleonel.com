@@ -391,7 +391,8 @@
     color:var(--text-dim); letter-spacing:0.05em; margin-bottom:12px; display:inline-block;
     padding:4px 8px; border:1px solid var(--line); width:fit-content; border-radius:1px;
   }
-  .rec-card .tag + .tag{margin-left:6px;}
+  .rec-tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;}
+  .rec-tags .tag{margin-bottom:0;}
   .rec-card .tag.store{border-color:var(--signal); color:var(--signal);}
   .rec-card .tag.site{border-color:var(--cobalt); color:var(--cobalt);}
   .rec-card .tag.youtube{border-color:#ff5a36; color:#ff5a36;}
@@ -748,22 +749,24 @@
       </div>
       <div class="recommendations-grid">
         <div class="rec-card reveal">
-          <span class="tag store">Loja</span>
-          <span class="tag youtube">YouTube</span>
-          <span class="tag">TikTok</span>
-          <span class="tag">Instagram</span>
+          <div class="rec-tags">
+            <span class="tag store">Loja</span>
+            <span class="tag youtube">YouTube</span>
+            <span class="tag">TikTok</span>
+            <span class="tag">Instagram</span>
+          </div>
           <h4>Fredarki</h4>
           <p><strong>Fredarki</strong> é um criador de conteúdo brasileiro focado em videogames, com vídeos sobre games, notícias, curiosidades, reviews e lives. Também está no YouTube, TikTok e Instagram, além de manter uma loja própria com produtos <strong>geek e gamer</strong>, como camisetas, canecas, copos, quadros e acessórios.</p>
-          <a href="https://fredarki.com.br/" target="_blank" rel="noopener">Conhecer</a>
+          <a href="https://linktr.ee/fredarki" target="_blank" rel="noopener">Conhecer</a>
         </div>
         <div class="rec-card reveal">
-          <span class="tag store">Loja</span>
+          <div class="rec-tags"><span class="tag store">Loja</span></div>
           <h4>Nome da Loja 2</h4>
           <p>Descrição da loja, tipos de produtos ou serviços que oferecem.</p>
           <a href="https://exemplo.com" target="_blank" rel="noopener">Visitar</a>
         </div>
         <div class="rec-card reveal">
-          <span class="tag site">Site</span>
+          <div class="rec-tags"><span class="tag site">Site</span></div>
           <h4>Nome do Site/Criador 2</h4>
           <p>Descrição do site ou criador de conteúdo que você segue.</p>
           <a href="https://exemplo.com" target="_blank" rel="noopener">Conhecer</a>
