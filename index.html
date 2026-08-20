@@ -22,6 +22,8 @@
     --cobalt-dim:#3d5afe66;
     --signal:#ff5a36;
     --lime:#00FF00;
+    --hover-border:#8b919e;
+    --hover-surface:#f5f6f8;
     --radius:2px;
     --max:1180px;
     --ease:cubic-bezier(.16,1,.3,1);
@@ -217,7 +219,7 @@
   .btn.primary{background:var(--text); color:var(--void);}
   .btn.primary:hover{background:var(--lime);}
   .btn.ghost{border:1px solid var(--line-strong);}
-  .btn.ghost:hover{border-color:var(--text); }
+  .btn.ghost:hover{border-color:var(--hover-border); background:var(--hover-surface);}
 
   .scroll-cue{
     position:absolute; left:32px; bottom:36px;
@@ -286,7 +288,7 @@
     background:var(--void); padding:38px; position:relative;
     transition:background .3s var(--ease);
   }
-  .card:hover{background:var(--panel);}
+  .card:hover{background:var(--hover-surface);}
   .card .glyph{
     width:38px; height:38px; margin-bottom:26px; position:relative;
   }
@@ -338,7 +340,7 @@
     padding:20px; border:1px solid var(--line);
     border-radius:10px; transition:all .25s var(--ease);
   }
-  .pillar:hover{border-color:var(--lime); background:rgba(212,255,61,0.02);}
+  .pillar:hover{border-color:var(--hover-border); background:var(--hover-surface);}
   .pillar .icon{font-size:28px; margin-bottom:12px; display:block;}
   .pillar h4{
     font-size:15px; font-weight:600; margin-bottom:8px;
@@ -375,7 +377,7 @@
     transition:all .25s var(--ease); cursor:pointer; border-radius:10px;
   }
   .rec-card:hover{
-    border-color:var(--lime); background:rgba(212,255,61,0.02); transform:translateY(-2px);
+    border-color:var(--hover-border); background:var(--hover-surface); transform:translateY(-2px);
   }
   .rec-card .tag{
     font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase;
@@ -410,7 +412,7 @@
   }
   .contact-info .item .mono{font-size:11px; color:var(--text-dim); display:block; margin-bottom:8px;}
   .contact-info .item a, .contact-info .item span{font-size:17px;}
-  .contact-info .item a:hover{color:var(--lime);}
+  .contact-info .item a:hover{color:var(--text);}
 
   form{display:flex; flex-direction:column; gap:20px;}
   .field{display:flex; flex-direction:column; gap:8px;}
@@ -426,7 +428,7 @@
   }
   .field input:focus, .field textarea:focus{border-color:var(--lime); outline:none;}
   form .btn{align-self:flex-start; margin-top:8px; background:transparent; border:1px solid var(--line-strong); cursor:pointer;}
-  form .btn:hover{border-color:var(--lime); color:var(--lime);}
+  form .btn:hover{border-color:var(--lime); background:var(--lime); color:var(--text);}
   .form-status{font-size:13px; color:var(--text-dim); min-height:18px;}
 
   /* ---------- LOJA ---------- */
@@ -465,7 +467,7 @@
   .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;}
   .footer-nav{display:flex; gap:22px; flex-wrap:wrap;}
   .footer-nav a{font-size:13px; color:var(--text-dim);}
-  .footer-nav a:hover{color:var(--lime);}
+  .footer-nav a:hover{color:var(--text);}
   .footer-bottom{
     margin-top:40px; padding-top:24px; border-top:1px solid var(--line);
     display:flex; justify-content:space-between; font-size:12px; color:var(--text-dim);
