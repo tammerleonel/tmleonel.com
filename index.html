@@ -63,7 +63,8 @@
 
   .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
 
-  ::selection{background:var(--lime); color:var(--void);}
+  ::selection{background:#b3d4fc; color:var(--text);}
+  ::-moz-selection{background:#b3d4fc; color:var(--text);}
 
   /* ---------- SCROLLBAR / FOCUS ---------- */
   :focus-visible{outline:2px solid var(--lime); outline-offset:3px;}
@@ -78,7 +79,7 @@
   }
   .nav{
     display:flex; align-items:center; justify-content:space-between;
-    height:76px;
+    height:76px; position:relative;
   }
   .logo{
     font-family:'Space Grotesk', sans-serif;
@@ -88,7 +89,10 @@
   }
   .logo img{width:180px; height:48px; object-fit:contain;}
 
-  nav.links{display:flex; gap:2px;}
+  nav.links{
+    display:flex; gap:2px; position:absolute; left:50%;
+    transform:translateX(-50%);
+  }
   nav.links a{
     font-family:'JetBrains Mono', monospace;
     font-size:12.5px;
@@ -110,17 +114,6 @@
   nav.links a:hover::before{transform:scaleX(1);}
   nav.links a.active{color:var(--text);}
   nav.links a.active::before{transform:scaleX(1); background:var(--signal);}
-
-  .nav-cta{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    padding:10px 18px;
-    border:1px solid var(--line-strong);
-    transition:all .25s var(--ease);
-  }
-  .nav-cta:hover{border-color:var(--lime); color:var(--lime);}
 
   .burger{
     display:none; flex-direction:column; gap:5px;
@@ -324,12 +317,13 @@
     display:grid; grid-template-columns:1fr; gap:40px;
     max-width:720px; margin:0 auto; text-align:center;
   }
-  .missao-header{margin-bottom:20px;}
+  .missao-header{margin-bottom:20px; text-align:left;}
   .missao-header h3{
     font-size:clamp(22px, 2.8vw, 32px);
     margin-bottom:16px;
     color:var(--text);
   }
+  .missao-header .brand-muted{color:var(--text-dim);}
   .missao-header p{
     font-size:15px; color:var(--text-dim); line-height:1.8;
   }
@@ -500,7 +494,6 @@
       transition:transform .35s var(--ease);
     }
     nav.links a{padding:16px 0; font-size:14px; border-bottom:1px solid var(--line); width:100%;}
-    .nav-cta{display:none;}
     .burger{display:flex; margin-left:auto; position:relative; z-index:102;}
     .wrap{padding:0 16px;}
     .logo img{width:140px; height:42px;}
@@ -523,7 +516,6 @@
       <a href="#contato">Contato</a>
       <a href="#loja">Loja</a>
     </nav>
-    <a href="#contato" class="nav-cta">Iniciar projeto</a>
     <button class="burger" id="burger" aria-label="Abrir menu">
       <span></span><span></span><span></span>
     </button>
@@ -561,7 +553,7 @@
     <div class="wrap">
       <div class="missao-content reveal">
         <div class="missao-header">
-          <h3>A marca tmleonel</h3>
+          <h3>A marca <span class="brand-muted">tmleonel</span></h3>
           <p>Nasceu de um sonho: construir algo próprio. Transformar desafios em conhecimento e usar tecnologia para criar oportunidades.</p>
         </div>
         <div class="pillars">
@@ -738,7 +730,7 @@
       <div class="recommendations-grid">
         <div class="rec-card reveal">
           <div class="rec-tags">
-            <span class="tag store">Loja</span>
+            <span class="tag site">Site</span>
             <span class="tag youtube">YouTube</span>
             <span class="tag tiktok">TikTok</span>
             <span class="tag instagram">Instagram</span>
@@ -786,12 +778,8 @@
         </div>
         <form class="reveal" id="contactForm">
           <div class="field">
-            <label for="name">Nome</label>
-            <input id="name" name="name" type="text" required placeholder="Seu nome">
-          </div>
-          <div class="field">
             <label for="message">Mensagem</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Conte sobre o seu projeto"></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="Conte sobre o seu projeto (opcional)"></textarea>
           </div>
           <button type="submit" class="btn">Enviar via WhatsApp</button>
           <p class="form-status" id="formStatus"></p>
@@ -900,11 +888,12 @@
   
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('name').value;
     const message = document.getElementById('message').value;
     
     // Construir a mensagem formatada
-    let fullMessage = `Olá Tâmmer!\n\n*Nome:* ${name}\n*Mensagem:* ${message}`;
+    let fullMessage = message
+      ? `Olá Tâmmer!\n\n*Mensagem:* ${message}`
+      : 'Olá Tâmmer!';
     
     // Codificar e abrir WhatsApp
     const encodedMessage = encodeURIComponent(fullMessage);
