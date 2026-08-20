@@ -21,7 +21,7 @@
     --cobalt:#3d5afe;
     --cobalt-dim:#3d5afe66;
     --signal:#ff5a36;
-    --lime:#d4ff3d;
+    --lime:#00FF00;
     --radius:2px;
     --max:1180px;
     --ease:cubic-bezier(.16,1,.3,1);
@@ -247,7 +247,7 @@
   }
   .about-visual{
     position:relative; aspect-ratio:1/1; border:1px solid var(--line-strong);
-    display:grid; place-items:center; overflow:hidden;
+    display:grid; place-items:center; overflow:hidden; border-radius:10px;
   }
   .about-visual .core{
     width:46%; height:46%; border-radius:50%;
@@ -269,6 +269,7 @@
   .focus-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
     background:var(--line); margin-top:40px; border:1px solid var(--line);
+    border-radius:10px; overflow:hidden;
   }
   .focus-item{background:var(--panel); padding:24px; }
   .focus-item .num{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-dim);}
@@ -279,6 +280,7 @@
   .proj-grid{
     display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
     background:var(--line); border:1px solid var(--line);
+    border-radius:10px; overflow:hidden;
   }
   .card{
     background:var(--void); padding:38px; position:relative;
@@ -379,7 +381,7 @@
   .recommendations-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:48px;}
   .rec-card{
     border:1px solid var(--line-strong); padding:28px; display:flex; flex-direction:column;
-    transition:all .25s var(--ease); cursor:pointer; border-radius:2px;
+    transition:all .25s var(--ease); cursor:pointer; border-radius:10px;
   }
   .rec-card:hover{
     border-color:var(--lime); background:rgba(212,255,61,0.02); transform:translateY(-2px);
@@ -433,7 +435,11 @@
   .form-status{font-size:13px; color:var(--text-dim); min-height:18px;}
 
   /* ---------- LOJA ---------- */
-  .shop-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .shop-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+    border-radius:10px; overflow:hidden;
+  }
   .shop-card{background:var(--void); padding:32px; display:flex; flex-direction:column; min-height:260px;}
   .shop-card .badge{
     align-self:flex-start; font-family:'JetBrains Mono', monospace; font-size:10.5px;
