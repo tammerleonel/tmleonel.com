@@ -391,6 +391,7 @@
   }
   .rec-card .tag.store{border-color:var(--signal); color:var(--signal);}
   .rec-card .tag.site{border-color:var(--cobalt); color:var(--cobalt);}
+  .rec-card .tag.youtube{border-color:#ff5a36; color:#ff5a36;}
   .rec-card h4{
     font-size:17px; margin-bottom:10px; color:var(--text);
   }
@@ -482,9 +483,10 @@
   }
   @media (max-width: 720px){
     nav.links{
-      position:fixed; top:76px; left:0; right:0; bottom:0;
+      position:fixed; top:76px; left:0; right:0; bottom:0; z-index:99;
       background:var(--void); flex-direction:column; padding:20px 32px;
       transform:translateX(100%); transition:transform .35s var(--ease);
+      box-shadow:-2px 0 8px rgba(16, 18, 24, 0.12);
     }
     nav.links.open{transform:translateX(0);}
     nav.links a{padding:16px 0; font-size:14px; border-bottom:1px solid var(--line); width:100%;}
@@ -734,15 +736,15 @@
       <div class="recommendations-grid">
         <div class="rec-card reveal">
           <span class="tag store">Loja</span>
-          <h4>Nome da Loja 1</h4>
-          <p>Descrição da loja, tipos de produtos ou serviços que oferecem.</p>
-          <a href="https://exemplo.com" target="_blank" rel="noopener">Visitar</a>
+          <h4>Fredarki</h4>
+          <p>A <strong>Fredarki</strong> é uma loja de produtos criativos com inspiração no universo <strong>geek, gamer e cultura pop</strong>. Oferece <strong>camisetas, canecas, copos, quadros e acessórios</strong> para jogos e controles.</p>
+          <a href="https://fredarki.com.br/" target="_blank" rel="noopener">Visitar</a>
         </div>
         <div class="rec-card reveal">
-          <span class="tag site">Site</span>
-          <h4>Nome do Site/Criador 1</h4>
-          <p>Descrição do site ou criador de conteúdo que você segue.</p>
-          <a href="https://exemplo.com" target="_blank" rel="noopener">Conhecer</a>
+          <span class="tag youtube">YouTube</span>
+          <h4>Fredarki</h4>
+          <p>Canal no YouTube com conteúdo sobre geek, gamer e cultura pop. Confira reviews de produtos, dicas e lives sobre universos nerds.</p>
+          <a href="https://www.youtube.com/channel/UC749Grz7bgiYkBWK92LGddA" target="_blank" rel="noopener">Assistir</a>
         </div>
         <div class="rec-card reveal">
           <span class="tag store">Loja</span>
