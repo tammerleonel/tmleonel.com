@@ -643,8 +643,8 @@
       <div class="contact-grid">
         <div class="contact-info reveal">
           <div class="item">
-            <span class="mono">E-mail</span>
-            <a href="mailto:contato@tmleonel.com">contato@tmleonel.com</a>
+            <span class="mono">WhatsApp</span>
+            <a href="https://wa.me/5531993398369?text=Olá%20Tâmmer%21%20Gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">+55 31 99339-8369</a>
           </div>
           <div class="item">
             <span class="mono">GitHub</span>
@@ -665,14 +665,14 @@
             <input id="name" name="name" type="text" required placeholder="Seu nome">
           </div>
           <div class="field">
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" required placeholder="voce@email.com">
+            <label for="phone">Telefone (opcional)</label>
+            <input id="phone" name="phone" type="tel" placeholder="(31) 99999-9999">
           </div>
           <div class="field">
             <label for="message">Mensagem</label>
             <textarea id="message" name="message" rows="4" required placeholder="Conte sobre o seu projeto"></textarea>
           </div>
-          <button type="submit" class="btn">Enviar mensagem</button>
+          <button type="submit" class="btn">Enviar via WhatsApp</button>
           <p class="form-status" id="formStatus"></p>
         </form>
       </div>
@@ -771,12 +771,32 @@
   }, { threshold: 0.12 });
   revealEls.forEach(el => revealObserver.observe(el));
 
-  // Contact form (demo — no backend wired up)
+  // Contact form — redirect to WhatsApp with message
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
+  const WHATSAPP_NUMBER = '5531993398369';
+  
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    status.textContent = 'Mensagem pronta — conecte este formulário a um serviço de e-mail para ativar o envio.';
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+    
+    // Construir a mensagem formatada
+    let fullMessage = `Olá Tâmmer!\n\n*Nome:* ${name}`;
+    if (phone) fullMessage += `\n*Telefone:* ${phone}`;
+    fullMessage += `\n*Mensagem:* ${message}`;
+    
+    // Codificar e abrir WhatsApp
+    const encodedMessage = encodeURIComponent(fullMessage);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+    
+    status.textContent = 'Abrindo WhatsApp... 📱';
+    setTimeout(() => {
+      form.reset();
+      status.textContent = '';
+    }, 2000);
   });
 </script>
 
