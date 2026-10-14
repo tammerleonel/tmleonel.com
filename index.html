@@ -495,6 +495,141 @@
     section{padding:80px 0;}
     .hero-shapes{right:-30%; opacity:0.35;}
   }
+
+  /* ---------- PROJETO EM DESTAQUE: MERCADOKEEP ---------- */
+  .card.featured{
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(61,90,254,0.04) 0%, rgba(0,255,0,0.03) 100%), var(--void);
+    border: 1px solid var(--cobalt-dim);
+    border-top: 3px solid var(--cobalt);
+    padding: 44px;
+    position: relative;
+    border-radius: 4px;
+  }
+  .card.featured:hover{
+    background: linear-gradient(135deg, rgba(61,90,254,0.07) 0%, rgba(0,255,0,0.05) 100%), var(--hover-surface);
+    border-color: var(--cobalt);
+  }
+  .featured-badge-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .featured-badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    background: rgba(61,90,254,0.08);
+    border: 1px solid rgba(61,90,254,0.3);
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+  .featured-badge .live-dot{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00FF00;
+    box-shadow: 0 0 8px #00FF00;
+    display: inline-block;
+    animation: livePulse 1.8s infinite ease-in-out;
+  }
+  @keyframes livePulse{
+    0%, 100%{ opacity: 1; transform: scale(1); }
+    50%{ opacity: 0.35; transform: scale(0.85); }
+  }
+  .featured-link{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+  }
+  .featured-link:hover{
+    color: var(--signal);
+    text-decoration: underline;
+  }
+  .card.featured h3{
+    font-size: clamp(22px, 2.5vw, 28px);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .card.featured p{
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    max-width: 860px;
+  }
+  .card.featured .features-pills{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 22px 0 24px;
+  }
+  @media (max-width: 720px){
+    .card.featured .features-pills{ grid-template-columns: 1fr; }
+    .card.featured{ padding: 26px 20px; }
+  }
+  .feat-pill{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    border-radius: 2px;
+  }
+  .feat-pill strong{
+    display: block;
+    font-size: 12.5px;
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .feat-pill span{
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    display: block;
+  }
+  .card.featured .card-actions{
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  nav.links a.highlight-menu{
+    color: var(--cobalt);
+    font-weight: 600;
+  }
+  nav.links a.highlight-menu::before{
+    background: var(--cobalt);
+  }
+  .nav-dot{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #00FF00;
+    border-radius: 50%;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
 </style>
 </head>
 <body>
@@ -506,6 +641,7 @@
       <a href="#home" class="active">Home</a>
       <a href="#sobre">Sobre</a>
       <a href="#projetos">Projetos</a>
+      <a href="#mercadokeep" class="highlight-menu">MercadoKeep <span class="nav-dot"></span></a>
       <a href="#habilidades">Habilidades</a>
       <a href="#indicacoes">Indicações</a>
       <a href="#contato">Contato</a>
@@ -624,6 +760,63 @@
         </div>
       </div>
       <div class="proj-grid reveal">
+        <!-- PROJETO EM DESTAQUE: MERCADOKEEP -->
+        <div class="card featured" id="mercadokeep">
+          <div class="featured-badge-row">
+            <span class="featured-badge">
+              <span class="live-dot"></span> PROJETO EM DESTAQUE · AO VIVO
+            </span>
+            <a href="https://mercado-app.tammerleonel.workers.dev/" target="_blank" rel="noopener" class="featured-link">
+              mercado-app.tammerleonel.workers.dev ↗
+            </a>
+          </div>
+
+          <div class="glyph bag">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cobalt);">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+              <path d="M3 6h18"></path>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+          </div>
+
+          <h3>MercadoKeep — Lista de Compras Inteligente</h3>
+          <p>
+            Aplicação web progressiva (PWA) e mobile-first criada para modernizar e simplificar as compras em supermercados e o controle financeiro doméstico. Com arquitetura moderna em React, TypeScript e Tailwind CSS, integra sincronização instantânea em tempo real na nuvem via Google Firebase Firestore, modo convidado e funcionamento offline resiliente via IndexedDB.
+          </p>
+
+          <div class="features-pills">
+            <div class="feat-pill">
+              <strong>🛒 Organização por Corredores</strong>
+              <span>Categorização inteligente de itens em setores como Hortifrúti, Carnes, Mercearia, Laticínios e Limpeza.</span>
+            </div>
+            <div class="feat-pill">
+              <strong>⚡ Sync na Nuvem & Multi-usuário</strong>
+              <span>Listas sincronizadas ao vivo entre celular e computador com Google Auth e convites colaborativos.</span>
+            </div>
+            <div class="feat-pill">
+              <strong>📱 PWA Instalável & Offline</strong>
+              <span>Instalação instantânea na tela inicial sem loja de apps, cálculo dinâmico de orçamento e subtotais.</span>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Firebase Firestore</span>
+            <span class="tag">Google Auth</span>
+            <span class="tag">PWA / Offline</span>
+            <span class="tag">Cloudflare Workers</span>
+          </div>
+
+          <div class="card-actions">
+            <a href="https://mercado-app.tammerleonel.workers.dev/" target="_blank" rel="noopener" class="btn primary">
+              Acessar App Online ↗
+            </a>
+            <a href="#contato" class="btn ghost">
+              Falar sobre este projeto
+            </a>
+          </div>
+        </div>
         <div class="card">
           <div class="glyph circle"></div>
           <h3>Dashboard de Frota</h3>
@@ -826,6 +1019,7 @@
         <a href="#home">Home</a>
         <a href="#sobre">Sobre</a>
         <a href="#projetos">Projetos</a>
+        <a href="#mercadokeep">MercadoKeep</a>
         <a href="#habilidades">Habilidades</a>
         <a href="#indicacoes">Indicações</a>
         <a href="#contato">Contato</a>
@@ -847,7 +1041,7 @@
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
   // Scroll-spy active link
-  const sections = document.querySelectorAll('main section, .hero');
+  const sections = document.querySelectorAll('main section, .hero, #mercadokeep');
   const navAnchors = document.querySelectorAll('nav.links a');
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
