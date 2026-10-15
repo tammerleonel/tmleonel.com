@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="keepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Background rounded rect -->
+  <rect width="512" height="512" rx="128" fill="url(#keepGrad)"/>
+
+  <!-- Note paper sheet backdrop -->
+  <g filter="url(#shadow)">
+    <rect x="96" y="96" width="320" height="320" rx="36" fill="#ffffff"/>
+  </g>
+
+  <!-- Note lines / Checklist representation -->
+  <rect x="144" y="152" width="72" height="12" rx="6" fill="#10b981"/>
+  <rect x="232" y="152" width="136" height="12" rx="6" fill="#e2e8f0"/>
+  
+  <!-- Checkbox 1 -->
+  <rect x="144" y="196" width="28" height="28" rx="8" fill="#10b981"/>
+  <path d="M152 210 L156 214 L164 204" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="188" y="204" width="180" height="12" rx="6" fill="#94a3b8"/>
+
+  <!-- Checkbox 2 -->
+  <rect x="144" y="244" width="28" height="28" rx="8" fill="#10b981"/>
+  <path d="M152 258 L156 262 L164 252" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="188" y="252" width="150" height="12" rx="6" fill="#94a3b8"/>
+
+  <!-- Checkbox 3 (pending with tag price) -->
+  <rect x="144" y="292" width="28" height="28" rx="8" fill="#e2e8f0"/>
+  <rect x="188" y="300" width="120" height="12" rx="6" fill="#64748b"/>
+
+  <!-- Floating Smart Shopping Cart Badge -->
+  <g filter="url(#shadow)">
+    <circle cx="360" cy="360" r="64" fill="url(#cartGrad)"/>
+    <!-- Shopping cart icon -->
+    <path d="M336 348 h10 l8 20 h30 l6 -16 h-36" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="356" cy="378" r="4" fill="#ffffff"/>
+    <circle cx="380" cy="378" r="4" fill="#ffffff"/>
+  </g>
+</svg>
