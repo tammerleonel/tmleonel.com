@@ -1,2 +1,39 @@
-<meta http-equiv="refresh" content="0; url=/mercado.html">
-<script>location.replace('/mercado.html');</script>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>MercadoKeep - Listas de Compras Inteligentes</title>
+    <meta name="description" content="Aplicativo inteligente estilo Google Keep para listas de compras com leitura de etiquetas por OCR, colaboração em tempo real, cálculo de totais e PWA." />
+    <meta property="og:title" content="MercadoKeep - Listas de Compras Inteligentes" />
+    <meta property="og:description" content="Aplicativo inteligente estilo Google Keep para listas de compras com leitura de etiquetas por OCR, colaboração em tempo real, cálculo de totais e PWA." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#10b981" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="MercadoKeep" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('mercadokeep_dark_mode');
+          var isDark = saved !== null ? saved === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-tMO7y2c-.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DSwbjUZa.css">
+  <link rel="manifest" href="./manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
+  <body class="bg-[#f8fafc] dark:bg-[#121212] text-slate-800 dark:text-slate-100 antialiased selection:bg-emerald-100 selection:text-emerald-900 min-h-screen">
+    <div id="root"></div>
+  </body>
+</html>
+
